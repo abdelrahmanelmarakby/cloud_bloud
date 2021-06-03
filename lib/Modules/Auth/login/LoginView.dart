@@ -1,4 +1,5 @@
 import 'package:cloud_bloud/Modules/Auth/SignUp/signup_view.dart';
+import 'package:cloud_bloud/Modules/Auth/login/LoginController.dart';
 import 'package:cloud_bloud/Widgets/txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,7 +7,7 @@ import 'package:get/get.dart';
 
 import '../../../consts.dart';
 
-class LoginView extends GetWidget {
+class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,6 +124,7 @@ class LoginView extends GetWidget {
                   child: Txt(
                     color: Colors.white,
                     title: "Sign IN",
+                    isBold: true,
                   )),
             ],
           ),
