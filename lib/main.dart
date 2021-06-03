@@ -1,3 +1,4 @@
+import 'package:cloud_bloud/core/Utils/Bindings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
                 UnderlineInputBorder(borderRadius: BorderRadius.circular(8)),
           )),
       defaultTransition: Transition.fade,
+      initialBinding: Binding(),
       home: spalshPage(),
     );
   }

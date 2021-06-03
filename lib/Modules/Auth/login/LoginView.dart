@@ -66,17 +66,18 @@ class LoginView extends GetView<LoginController> {
                         children: [
                           Align(
                             child: Txt(
-                              title: "email",
+                              title: "User name",
                               size: 14,
                             ),
                             alignment: Alignment.bottomLeft,
                           ),
                           Container(
                             child: TextFormField(
-                              autofillHints: [AutofillHints.email],
+                              controller: controller.username,
+                              autofillHints: [AutofillHints.username],
                               decoration: InputDecoration(
                                   alignLabelWithHint: true,
-                                  hintText: "Your_email@email.com"),
+                                  hintText: "example"),
                               autocorrect: true,
                             ),
                           ),
@@ -89,20 +90,19 @@ class LoginView extends GetView<LoginController> {
                         children: [
                           Align(
                             child: Txt(
-                              title: "password",
+                              title: "Password",
                               size: 14,
                             ),
                             alignment: Alignment.bottomLeft,
                           ),
                           Container(
                             child: TextFormField(
+                              controller: controller.password,
                               autofillHints: [AutofillHints.password],
+                              obscureText: true,
                               decoration: InputDecoration(
                                   alignLabelWithHint: true, hintText: "******"),
                               autocorrect: true,
-                              onEditingComplete: () =>
-                                  TextInput.finishAutofillContext(
-                                      shouldSave: true),
                             ),
                           ),
                         ],
@@ -120,7 +120,11 @@ class LoginView extends GetView<LoginController> {
                       borderRadius: BorderRadius.circular(8)),
                   height: 50,
                   minWidth: Get.width,
-                  onPressed: () {},
+                  onPressed: () {
+                    TextInput.finishAutofillContext();
+                    controller.login(
+                        controller.username.text, controller.password.text);
+                  },
                   child: Txt(
                     color: Colors.white,
                     title: "Sign IN",
