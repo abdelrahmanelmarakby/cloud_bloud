@@ -1,5 +1,4 @@
-import 'package:cloud_bloud/Widgets/txt_form.dart';
-import 'package:cloud_bloud/login/LoginView.dart';
+import 'package:cloud_bloud/Widgets/txt.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,18 +26,6 @@ class SignUpView extends StatelessWidget {
               SizedBox(
                 height: Get.height * .1,
               ),
-              TxtForm(
-                title: "Email",
-                icon: Icon(Icons.alternate_email),
-                hint: "example@email.com",
-              ),
-              SizedBox(
-                height: Get.height * .05,
-              ),
-              TxtForm(
-                  title: "password",
-                  hint: "*******",
-                  icon: Icon(Icons.lock_outline))
             ],
           ),
         ),

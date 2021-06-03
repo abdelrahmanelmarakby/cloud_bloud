@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cloud_bloud/login/LoginView.dart';
+import 'package:cloud_bloud/Modules/Auth/login/LoginView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
