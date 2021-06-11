@@ -1,13 +1,13 @@
 import 'package:cloud_bloud/Modules/Auth/SignUp/signup_view.dart';
 import 'package:cloud_bloud/Modules/Auth/login/LoginController.dart';
 import 'package:cloud_bloud/Widgets/txt.dart';
+import 'package:cloud_bloud/consts.dart';
+import 'package:cloud_bloud/generated/assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:glass/glass.dart';
-
-import '../../../consts.dart';
 
 class LoginView extends GetView<LoginController> {
   @override
@@ -18,9 +18,7 @@ class LoginView extends GetView<LoginController> {
         width: Get.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage(
-                    "https://images.unsplash.com/photo-1527358043728-909898958b29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=1000&q=100"),
-                fit: BoxFit.cover)),
+                image: AssetImage('assets/BACKGROUND.png'), fit: BoxFit.cover)),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
@@ -35,7 +33,7 @@ class LoginView extends GetView<LoginController> {
                     child: Hero(
                   tag: "logo",
                   child: Image.asset(
-                    'assets/appLogo.png',
+                    Assets.assetsAppLogo,
                     height: Get.height * .1,
                   ),
                 )),
@@ -125,22 +123,26 @@ class LoginView extends GetView<LoginController> {
                               ],
                             ),
                           ),
-                          FlatButton(
-                              color: accentColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8)),
-                              height: 50,
-                              minWidth: Get.width,
+                          Container(
+                            height: 50,
+                            child: TextButton(
                               onPressed: () {
                                 TextInput.finishAutofillContext();
                                 controller.login(controller.username.text,
                                     controller.password.text);
                               },
+                              style: TextButton.styleFrom(
+                                  minimumSize: Size.infinite,
+                                  backgroundColor: accentColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8))),
                               child: Txt(
-                                color: Colors.white,
-                                title: "Sign IN",
+                                title: "SIGN IN",
                                 isBold: true,
-                              )),
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

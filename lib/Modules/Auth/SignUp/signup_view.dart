@@ -1,9 +1,11 @@
+import 'package:cloud_bloud/Modules/Auth/SignUp/signup_controller.dart';
 import 'package:cloud_bloud/Widgets/txt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:glass/glass.dart';
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,9 +14,7 @@ class SignUpView extends StatelessWidget {
         width: Get.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage(
-                    "https://images.unsplash.com/photo-1527358043728-909898958b29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=1000&q=100"),
-                fit: BoxFit.cover)),
+                image: AssetImage("assets/BACKGROUND.png"), fit: BoxFit.cover)),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
@@ -61,11 +61,15 @@ class SignUpView extends StatelessWidget {
                               ),
                               Container(
                                 child: TextFormField(
-                                  //controller: ,
-                                  autofillHints: [AutofillHints.username],
+                                  controller: controller.username,
+                                  autofillHints: [
+                                    AutofillHints.username,
+                                    AutofillHints.nickname,
+                                    AutofillHints.name
+                                  ],
                                   decoration: InputDecoration(
                                       alignLabelWithHint: true,
-                                      hintText: "example"),
+                                      hintText: "your Name"),
                                   autocorrect: true,
                                 ),
                               ),
@@ -83,11 +87,12 @@ class SignUpView extends StatelessWidget {
                               ),
                               Container(
                                 child: TextFormField(
+                                  controller: controller.password,
                                   //controller: ,
                                   autofillHints: [AutofillHints.password],
                                   decoration: InputDecoration(
                                       alignLabelWithHint: true,
-                                      hintText: "example"),
+                                      hintText: "*************"),
                                   autocorrect: true,
                                   obscureText: true,
                                 ),
@@ -106,8 +111,11 @@ class SignUpView extends StatelessWidget {
                               ),
                               Container(
                                 child: TextFormField(
-                                  //controller: ,
-                                  autofillHints: [AutofillHints.email],
+                                  controller: controller.email,
+                                  keyboardType: TextInputType.emailAddress,
+                                  autofillHints: [
+                                    AutofillHints.email,
+                                  ],
                                   decoration: InputDecoration(
                                       alignLabelWithHint: true,
                                       hintText: "example@email.com"),
@@ -128,13 +136,15 @@ class SignUpView extends StatelessWidget {
                               ),
                               Container(
                                 child: TextFormField(
+                                  controller: controller.phone,
+                                  keyboardType: TextInputType.phone,
                                   //controller: ,
                                   autofillHints: [
                                     AutofillHints.telephoneNumber
                                   ],
                                   decoration: InputDecoration(
                                       alignLabelWithHint: true,
-                                      hintText: "example"),
+                                      hintText: "Should be 11 numbers"),
                                   autocorrect: true,
                                 ),
                               ),
@@ -179,6 +189,8 @@ class SignUpView extends StatelessWidget {
                             ),
                             Container(
                               child: TextFormField(
+                                controller: controller.location,
+
                                 //controller: ,
                                 autofillHints: [AutofillHints.addressCity],
                                 decoration: InputDecoration(
@@ -202,10 +214,11 @@ class SignUpView extends StatelessWidget {
                             Container(
                               child: TextFormField(
                                 //controller: ,
+                                controller: controller.age,
+                                keyboardType: TextInputType.number,
                                 autofillHints: [AutofillHints.birthday],
                                 decoration: InputDecoration(
-                                    alignLabelWithHint: true,
-                                    hintText: "example"),
+                                    alignLabelWithHint: true, hintText: "21"),
                                 autocorrect: true,
                               ),
                             ),
@@ -223,14 +236,30 @@ class SignUpView extends StatelessWidget {
                             ),
                             Container(
                               child: TextFormField(
-                                //controller: ,
-
+                                controller: controller.bloodType,
                                 decoration: InputDecoration(
-                                    alignLabelWithHint: true,
-                                    hintText: "example"),
+                                    alignLabelWithHint: true, hintText: "B+"),
                                 autocorrect: true,
                               ),
                             ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                controller.signUp(
+                                    controller.username.text,
+                                    controller.email.text,
+                                    controller.password.text,
+                                    controller.phone.text,
+                                    controller.location.text,
+                                    controller.bloodType.text,
+                                    controller.age.text);
+                              },
+                              child: Txt(
+                                title: "SIGNUP",
+                              ),
+                            )
                           ],
                         ),
                       ],

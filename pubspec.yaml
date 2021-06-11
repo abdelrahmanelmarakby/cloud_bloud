@@ -18,5 +18,7 @@ dev_dependencies:
     sdk: flutter
 flutter:
   uses-material-design: true
-assets:
-    - assets/
+  assets:
+      - assets/appLogo.png
+      - assets/BACKGROUND.png
+      - assets/pattern.png
