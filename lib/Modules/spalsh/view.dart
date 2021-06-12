@@ -4,12 +4,12 @@ import 'package:cloud_bloud/Modules/Auth/login/LoginView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class spalshPage extends StatefulWidget {
+class SplashPage extends StatefulWidget {
   @override
-  _spalshPageState createState() => _spalshPageState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _spalshPageState extends State<spalshPage> {
+class _SplashPageState extends State<SplashPage> {
   @override
   initState() {
     super.initState();
@@ -17,7 +17,7 @@ class _spalshPageState extends State<spalshPage> {
   }
 
   waitAndNavigate() {
-    Timer(Duration(seconds: 3), () => Get.to(() => LoginView()));
+    Timer(Duration(seconds: 3), () => Get.offAll(() => LoginView()));
   }
 
   @override

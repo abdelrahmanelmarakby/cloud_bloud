@@ -12,7 +12,8 @@ dependencies:
   http: ^0.13.3
   google_fonts: ^2.1.0
   animate_do: 2.0.0
-  glass: ^0.1.0
+  glass: ^1.0.0+1
+  animations: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -22,3 +23,5 @@ flutter:
       - assets/appLogo.png
       - assets/BACKGROUND.png
       - assets/pattern.png
+      - assets/People_search.gif
+      - assets/Accept_request.gif

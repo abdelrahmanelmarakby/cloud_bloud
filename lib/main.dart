@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           )),
       defaultTransition: Transition.fade,
       initialBinding: Binding(),
-      home: spalshPage(),
+      home: SplashPage(),
     );
   }
 }

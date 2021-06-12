@@ -1,3 +1,4 @@
+import 'package:cloud_bloud/Modules/Auth/login/LoginView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -29,10 +30,13 @@ class SignUpController extends GetxController {
       "Seeker_donor_email": email.toString(),
       "Seeker_donor_password": password.toString(),
       "Seeker_donor_phone": phone.toString(),
-      "Seeker_donor_location": location.toString(),
+      "Seeker_donor_address": location.toString(),
       "Seeker_donor_blood_type": bloodType.toString(),
       "Seeker_donor_age": age.toString(),
+    }, headers: {
+      "Accept": "application/json",
+      "Access-Control_Allow_Origin": "*"
     });
-    print(response.body);
+    if (response.body == "seccess") Get.offAll(() => LoginView());
   }
 }
