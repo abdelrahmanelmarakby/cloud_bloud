@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:cloud_bloud/Modules/Seeker/search_donor_view.dart';
 import 'package:cloud_bloud/Widgets/txt.dart';
 import 'package:cloud_bloud/consts.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,10 @@ class HomeScreen extends GetView {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("Accept_request.gif"),
+                  Image.asset(
+                    "assets/request.png",
+                    height: Get.height / 3.5,
+                  ),
                   Txt(
                     title: "Accept requests",
                     color: Colors.white,
@@ -73,7 +77,7 @@ class HomeScreen extends GetView {
             ),
             openBuilder: (BuildContext context,
                 void Function({Object? returnValue}) action) {
-              return Scaffold();
+              return SeekerSearch();
             },
           )),
           Expanded(
@@ -84,7 +88,10 @@ class HomeScreen extends GetView {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("People_search.gif"),
+                  Image.asset(
+                    "assets/search.png",
+                    height: Get.height / 3,
+                  ),
                   Txt(
                     title: "Search for a donor",
                     color: Colors.white,

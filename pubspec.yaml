@@ -14,14 +14,11 @@ dependencies:
   animate_do: 2.0.0
   glass: ^1.0.0+1
   animations: ^2.0.0
+  enhanced_drop_down: ^0.1.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
 flutter:
   uses-material-design: true
   assets:
-      - assets/appLogo.png
-      - assets/BACKGROUND.png
-      - assets/pattern.png
-      - assets/People_search.gif
-      - assets/Accept_request.gif
+      - assets/
