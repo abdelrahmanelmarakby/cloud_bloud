@@ -2,6 +2,7 @@ import 'package:cloud_bloud/Modules/Auth/login/LoginController.dart';
 import 'package:cloud_bloud/Widgets/txt.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:switcher_button/switcher_button.dart';
 
 import '../../consts.dart';
 
@@ -174,14 +175,21 @@ class ProfileScreen extends GetView<LoginController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Txt(
-                            title: "USER ID :",
+                            title: "Be visable   :",
                             color: Colors.white,
                             size: 18,
                           ),
-                          Txt(
-                            title: profileUserID,
-                            color: Colors.white,
-                            size: 18,
+                          Obx(
+                            () => SwitcherButton(
+                              size: 70,
+                              value: controller.acceptingSwitch.value,
+                              onChange: (value) {
+                                if (value)
+                                  isAccepting = 1.toString();
+                                else
+                                  isAccepting = 0.toString();
+                              },
+                            ),
                           )
                         ],
                       ),

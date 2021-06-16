@@ -1,5 +1,4 @@
 import 'package:animations/animations.dart';
-import 'package:cloud_bloud/Modules/Seeker/search_donor_view.dart';
 import 'package:cloud_bloud/Widgets/txt.dart';
 import 'package:cloud_bloud/consts.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +6,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../ProfileScreen/profile_view.dart';
+import '../Seeker/search_donor_view.dart';
 
 class HomeScreen extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //drawer: Drawer(),
       appBar: AppBar(
         actions: [
           Padding(
@@ -51,62 +52,45 @@ class HomeScreen extends GetView {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Expanded(
-              child: OpenContainer(
-            closedBuilder: (context, action) => Container(
-              width: Get.width,
-              height: Get.height,
-              color: accentColor,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/request.png",
-                    height: Get.height / 3.5,
+      body: Container(
+        height: Get.height,
+        width: Get.width,
+        child: SingleChildScrollView(
+          child: Container(
+            height: Get.height * .92,
+            width: Get.width,
+            child: Column(
+              children: [
+                Expanded(
+                    child: OpenContainer(
+                  closedBuilder: (context, action) => Container(
+                    width: Get.width,
+                    color: primaryColor,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/search.png",
+                          height: Get.height / 2,
+                        ),
+                        Txt(
+                          title: "Search for a donor",
+                          color: Colors.white,
+                          isBold: true,
+                          size: 35,
+                        )
+                      ],
+                    ),
                   ),
-                  Txt(
-                    title: "Accept requests",
-                    color: Colors.white,
-                    isBold: true,
-                    size: 18,
-                  )
-                ],
-              ),
+                  openBuilder: (BuildContext context,
+                      void Function({Object? returnValue}) action) {
+                    return SeekerSearch();
+                  },
+                )),
+              ],
             ),
-            openBuilder: (BuildContext context,
-                void Function({Object? returnValue}) action) {
-              return SeekerSearch();
-            },
-          )),
-          Expanded(
-              child: OpenContainer(
-            closedBuilder: (context, action) => Container(
-              width: Get.width,
-              color: primaryColor,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/search.png",
-                    height: Get.height / 3,
-                  ),
-                  Txt(
-                    title: "Search for a donor",
-                    color: Colors.white,
-                    isBold: true,
-                    size: 18,
-                  )
-                ],
-              ),
-            ),
-            openBuilder: (BuildContext context,
-                void Function({Object? returnValue}) action) {
-              return Scaffold();
-            },
-          )),
-        ],
+          ),
+        ),
       ),
     );
   }

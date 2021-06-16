@@ -9,17 +9,17 @@ User userFromJson(String str) => User.fromJson(json.decode(str));
 String userToJson(User data) => json.encode(data.toJson());
 
 class User {
-  User({
-    required this.id,
-    required this.seekerDonorName,
-    required this.seekerDonorEmail,
-    required this.seekerDonorPassword,
-    required this.seekerDonorAddress,
-    required this.seekerDonorAge,
-    required this.seekerDonorPhone,
-    required this.seekerDonorBloodType,
-    required this.userId,
-  });
+  User(
+      {required this.id,
+      required this.seekerDonorName,
+      required this.seekerDonorEmail,
+      required this.seekerDonorPassword,
+      required this.seekerDonorAddress,
+      required this.seekerDonorAge,
+      required this.seekerDonorPhone,
+      required this.seekerDonorBloodType,
+      required this.userId,
+      required this.isAccepting});
 
   final String id;
   final String seekerDonorName;
@@ -29,6 +29,7 @@ class User {
   final String seekerDonorAge;
   final String seekerDonorPhone;
   final String seekerDonorBloodType;
+  final String isAccepting;
   final dynamic userId;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -53,6 +54,7 @@ class User {
         seekerDonorBloodType: json["Seeker_donor_blood_type"] == null
             ? null
             : json["Seeker_donor_blood_type"],
+        isAccepting: json['isAccepting'],
         userId: json["user_id"],
       );
 
@@ -65,6 +67,7 @@ class User {
         "Seeker_donor_age": seekerDonorAge,
         "Seeker_donor_phone": seekerDonorPhone,
         "Seeker_donor_blood_type": seekerDonorBloodType,
+        "isAccepting": isAccepting,
         "user_id": userId,
       };
 }

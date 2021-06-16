@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import '../../../consts.dart';
 
 class LoginController extends GetxController {
+  RxBool acceptingSwitch = true.obs;
   //==>VARS<==
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();

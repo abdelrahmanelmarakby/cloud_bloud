@@ -37,6 +37,6 @@ class SignUpController extends GetxController {
       "Accept": "application/json",
       "Access-Control_Allow_Origin": "*"
     });
-    if (response.body == "seccess") Get.offAll(() => LoginView());
+    if (response.statusCode == 200) Get.offAll(() => LoginView());
   }
 }
